@@ -83,7 +83,7 @@ export class ChartsComponent implements OnChanges {
       stroke: {
         dashArray: 4
       },
-      labels: ["Median Ratio"]
+      labels: ["asd"]
     };
   }
 }
