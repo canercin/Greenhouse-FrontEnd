@@ -1,1 +1,5 @@
-<p>chartsbox works!</p>
+<div class="container">
+  <div class="row">
+    <app-charts class="col-4" *ngFor="let seriesValue of seriesValues" [series]="seriesValue"></app-charts>
+  </div>
+</div>

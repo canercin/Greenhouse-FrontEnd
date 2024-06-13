@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-
+import { Component, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   NgApexchartsModule,
   ApexNonAxisChartSeries,
@@ -19,24 +18,33 @@ export type ChartOptions = {
   stroke: ApexStroke;
 };
 
-
 @Component({
   selector: 'app-charts',
   standalone: true,
   imports: [NgApexchartsModule],
   templateUrl: './charts.component.html',
-  styleUrl: './charts.component.css'
+  styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent {
+export class ChartsComponent implements OnChanges {
   @ViewChild("chart") chart: ChartComponent | undefined;
+  @Input() series: number | any; // Dinamik veri girişi için @Input ekleniyor
   public chartOptions: Partial<ChartOptions> | any;
 
   constructor() {
-    const seriesValue = 67;  // Series içerisindeki değeri burada tanımlıyoruz
-    this.chartOptions = {
+    this.chartOptions = this.getChartOptions(0); // Başlangıçta bir değer atanıyor
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['series']) {
+      this.chartOptions = this.getChartOptions(this.series); // Series değeri değiştiğinde grafiği güncelle
+    }
+  }
+
+  getChartOptions(seriesValue: number): Partial<ChartOptions> {
+    return {
       series: [seriesValue],
       chart: {
-        height: 200,
+        height: 350,
         type: "radialBar",
         offsetY: -10
       },
@@ -55,7 +63,7 @@ export class ChartsComponent {
               fontSize: "22px",
               color: undefined,
               formatter: function() {
-                return seriesValue + "%";  // Series değerini kullanarak yüzdelik gösterim yapıyoruz
+                return seriesValue + "%"; // Series değerini kullanarak yüzdelik gösterim yap
               }
             }
           }

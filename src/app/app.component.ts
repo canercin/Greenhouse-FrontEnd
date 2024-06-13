@@ -6,11 +6,12 @@ import {AllusersComponent} from "./allusers/allusers.component";
 import {MainComponent} from "./main/main.component";
 import {NgApexchartsModule} from 'ng-apexcharts';
 import {ChartsComponent} from "./charts/charts.component";
+import {ChartsboxComponent} from "./chartsbox/chartsbox.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, RegisterComponent, AllusersComponent, MainComponent, ChartsComponent, NgApexchartsModule],
+  imports: [RouterOutlet, LoginComponent, RegisterComponent, AllusersComponent, MainComponent, ChartsComponent, NgApexchartsModule, ChartsboxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
