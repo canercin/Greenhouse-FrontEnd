@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,4 +10,22 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  constructor(private router: Router) {
+  }
+
+  routeMain() {
+    this.router.navigate(['']).then();
+  }
+
+  routeAllUsers() {
+    this.router.navigate(['allusers']).then();
+  }
+
+  routeAllDatas() {
+    this.router.navigate(['alldatas']).then();
+  }
+
+  routeRegister() {
+    this.router.navigate(['register']).then();
+  }
 }
