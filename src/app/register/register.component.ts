@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AlertifyService} from "../service/alertify.service";
 
 @Component({
   selector: 'app-register',
@@ -9,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  constructor(private alertify: AlertifyService){
+  }
+
+  register() {
+    this.alertify.success('Registration successful');
+  }
 }
