@@ -9,6 +9,7 @@ import {ChartsComponent} from "./charts/charts.component";
 import {ChartsboxComponent} from "./chartsbox/chartsbox.component";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

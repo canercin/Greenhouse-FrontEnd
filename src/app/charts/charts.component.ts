@@ -28,6 +28,7 @@ export type ChartOptions = {
 export class ChartsComponent implements OnChanges {
   @ViewChild("chart") chart: ChartComponent | undefined;
   @Input() series: number | any; // Dinamik veri girişi için @Input ekleniyor
+  @Input() label: string | any;
   public chartOptions: Partial<ChartOptions> | any;
 
   constructor() {
@@ -63,7 +64,7 @@ export class ChartsComponent implements OnChanges {
               fontSize: "22px",
               color: undefined,
               formatter: function() {
-                return seriesValue + "%"; // Series değerini kullanarak yüzdelik gösterim yap
+                return seriesValue.toString(); // Series değerini kullanarak yüzdelik gösterim yap
               }
             }
           }
@@ -83,7 +84,7 @@ export class ChartsComponent implements OnChanges {
       stroke: {
         dashArray: 4
       },
-      labels: ["asd"]
+      labels: [this.label]
     };
   }
 }

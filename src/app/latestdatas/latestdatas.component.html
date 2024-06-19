@@ -1,29 +1,25 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">data1</th>
-    <th scope="col">data2</th>
-    <th scope="col">data3</th>
+    <th scope="col">Kayıt Tarihi</th>
+    <th scope="col">Sıcaklık</th>
+    <th scope="col">Toprak Nemi</th>
+    <th scope="col">Ortam Nemi</th>
+    <th scope="col">Işık Yoğunluğu</th>
+    <th scope="col">Su Seviyesi</th>
+    <th scope="col">Operasyon Nedeni</th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td></td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td></td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td colspan="2">Larry the Bird</td>
-    <td></td>
-  </tr>
+    @for(data of sensorData; track data.id){
+    <tr>
+      <td>{{data.stateTime}}</td>
+      <td>{{data.temperatureAsC}}</td>
+      <td>{{data.soilMoisture}}</td>
+      <td>{{data.humidity}}</td>
+      <td>{{data.lightAmount}}</td>
+      <td>{{data.waterLevel}}</td>
+      <td>{{data.operationType}}</td>
+    }
   </tbody>
 </table>

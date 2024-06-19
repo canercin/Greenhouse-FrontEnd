@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
-<!--<app-charts class="col-4" *ngFor="let seriesValue of seriesValues" [series]="seriesValue"></app-charts>-->
     @for (value of seriesValues; track value) {
-      <app-charts class="col-4" [series]= value></app-charts>
+      <app-charts class="col-4" [series]= value [label]="seriesLabels[$index]"></app-charts>
     }
   </div>
 </div>

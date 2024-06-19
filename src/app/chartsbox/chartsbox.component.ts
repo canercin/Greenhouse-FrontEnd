@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChartsComponent} from "../charts/charts.component";
-import { CommonModule } from '@angular/common'; // CommonModule'ü ekliyoruz
+import { CommonModule } from '@angular/common';
+import {GreenhouseService} from "../service/greenhouse.service";
 
 @Component({
   selector: 'app-chartsbox',
@@ -11,6 +12,15 @@ import { CommonModule } from '@angular/common'; // CommonModule'ü ekliyoruz
   templateUrl: './chartsbox.component.html',
   styleUrl: './chartsbox.component.css'
 })
-export class ChartsboxComponent {
-  seriesValues: number[] = [75, 50, 85];
+export class ChartsboxComponent implements OnInit {
+  seriesValues: number[] = [];
+  seriesLabels: string[] = ["Işık Miktarı (%)", "Sıcaklık (°C)", "Nem (%)", "Su Seviyesi (%)", "Toprak Nem Derecesi (%)"];
+
+  constructor(private greenhouseService: GreenhouseService) { }
+
+  ngOnInit(): void {
+    this.greenhouseService.getLastData().subscribe(data => {
+      this.seriesValues = [data.lightAmount, data.temperatureAsC, data.humidity, data.waterLevel, data.soilMoisture];
+    });
+  }
 }

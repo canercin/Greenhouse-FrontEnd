@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SidebarComponent} from "../sidebar/sidebar.component";
+import {GreenhouseService} from "../service/greenhouse.service";
+import {SensorData} from "../chartsbox/SensorDatas";
 
 @Component({
   selector: 'app-alldatas',
@@ -10,6 +12,16 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
   templateUrl: './alldatas.component.html',
   styleUrl: './alldatas.component.css'
 })
-export class AlldatasComponent {
+export class AlldatasComponent implements OnInit{
 
+  sensorData: SensorData[] | any[] = [];
+
+  constructor(private greenhouseService: GreenhouseService) {}
+
+
+  ngOnInit() {
+    this.greenhouseService.getDatas().subscribe(data => {
+      this.sensorData = data;
+    })
+  }
 }
