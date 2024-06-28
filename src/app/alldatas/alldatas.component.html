@@ -27,8 +27,31 @@
               <td>{{data.humidity}}</td>
               <td>{{data.lightAmount}}</td>
               <td>{{data.waterLevel}}</td>
-              <td>{{data.operationType}}</td>
+              @switch (data.operationType){
+                @case (0) {
+                  <td>Rutin bilgilendirme</td>
+                }
+                @case (1) {
+                  <td>Isıtıcı açıldı</td>
+                }
+                @case (2) {
+                  <td>Soğutucu açıldı</td>
+                }
+                @case (3) {
+                  <td>Işıklar açıldı</td>
+                }
+                @case (4){
+                  <td>Sulama yapıldı</td>
+                }
+                @case (5){
+                  <td>Su deposu dolduruldu</td>
+                }
+                @default {
+                  <td>Rutin bilgilendirme</td>
+                }
               }
+            </tr>
+          }
         </tbody>
       </table>
     </div>

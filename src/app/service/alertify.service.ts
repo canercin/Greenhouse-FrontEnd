@@ -13,4 +13,8 @@ export class AlertifyService {
   success(message: string) {
     this.alertify.success(message);
   }
+
+  error(message: string) {
+    this.alertify.error(message);
+  }
 }

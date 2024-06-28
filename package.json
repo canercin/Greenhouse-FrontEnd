@@ -22,6 +22,8 @@
     "angular": "^1.6.10",
     "apexcharts": "^3.49.1",
     "bootstrap": "^5.3.3",
+    "ember-cli-cors": "^0.0.2",
+    "jwt-decode": "^4.0.0",
     "ng-apexcharts": "^1.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

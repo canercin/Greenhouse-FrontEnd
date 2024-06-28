@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -8,13 +8,20 @@ import {Router} from "@angular/router";
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
+
+   protected isAdmin: boolean = false;
 
   constructor(private router: Router) {
   }
 
+  ngOnInit(): void {
+        this.isAdmin = JSON.parse(String(localStorage.getItem('role') === 'ROLE_ADMIN'));
+        console.log(this.isAdmin);
+  }
+
   routeMain() {
-    this.router.navigate(['']).then();
+    this.router.navigate(['main']).then();
   }
 
   routeAllUsers() {
@@ -27,5 +34,14 @@ export class SidebarComponent {
 
   routeRegister() {
     this.router.navigate(['register']).then();
+  }
+
+  routeAverages() {
+    this.router.navigate(['averages']).then();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login']).then();
   }
 }
